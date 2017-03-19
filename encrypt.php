@@ -1,28 +1,14 @@
 <?php
-/**
- * 宝付快捷支付-DEMO
- * 本实例依赖包在WEB-IF/lib文件夹内，证书在CER文件夹，配制文件在System_Config/app.properties
- * 实例仅供学习《宝付快捷支付》接口使用，仅供参考。商户可根据本实例写自已的代码
- * @author：宝付（大圣）
- * @date:20160620
- * 
- *测试卡具体信息如下：
- *银行卡号 		发卡行名称  姓名    身份证号    手机号
- *6222020111122220000	工商银行    张宝    320301198502169142	对接人员手机号	
- *6228480444455553333	农业银行    王宝    320301198502169142	对接人员手机号
- * 
- * 
- * @作者：宝付技术（大圣）
- */
+date_default_timezone_set('PRC');
 require_once './Config/init.php';
 Log::LogWirte("=====================支付交易====================");
 //==================接收用户数据==========================
 
-$user_id = isset($_POST["user_id"])? trim($_POST["user_id"]):"";//平台USER_ID
-$id_card = isset($_POST["id_card"])? trim($_POST["id_card"]):"";//身份证号码
-$id_holder = isset($_POST["id_holder"])? trim($_POST["id_holder"]):"";//姓名
-$txn_amt = isset($_POST["txn_amt"])? trim($_POST["txn_amt"]):0;//交易金额额
-$txn_amt *=100;//金额以分为单位（把元转换成分）    
+$user_id = isset($argv[1])? trim($argv[1]):"";//平台USER_ID
+$id_card = isset($argv[2])? trim($argv[2]):"";//身份证号码
+$id_holder = isset($argv[3])? trim($argv[3]):"";//姓名
+$txn_amt = isset($argv[4])? trim($argv[4]):0;//交易金额额
+$txn_amt *=100;//金额以分为单位（把元转换成分）
 
 //================报文组装=================================
 $DataContentParms =ARRAY();

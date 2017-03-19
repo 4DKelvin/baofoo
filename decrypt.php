@@ -1,15 +1,16 @@
 <?php
+date_default_timezone_set('PRC');
 require_once './Config/init.php';
 
 Log::LogWirte("===================接收异步通知========================");
 
-if(!isset($_POST["data_content"])){
+if(!isset($argv[1])){
     die(json_encode(array('code'=>500,'data'=>'参数错误')));
 }
 
 Log::LogWirte("异步通知原文：".$EndataContent);
 
-$EndataContent =  trim($_POST["data_content"]);
+$EndataContent =  trim($argv[1]);
 
 
 
@@ -27,7 +28,7 @@ try{
             $ArrayContent = json_decode($ReturnDecode,TRUE);
         }
     }
-    echo json_encode(array('code'=>200,'data'=>'ok'));
-}catch(Exception $e){
+    echo json_encode(array('code'=>200,'data'=> $ArrayContent));
+} catch (Exception $e){
     echo json_encode(array('code'=>500,'data'=>$e));
 }

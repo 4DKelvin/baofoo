@@ -1,0 +1,1 @@
+scp -r ./ stock@114.80.207.144:/home/stock/work/project/baofoo

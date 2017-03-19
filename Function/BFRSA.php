@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL^E_NOTICE^E_WARNING);
 define("BAOFOO_ENCRYPT_LEN", 32);
 require_once './Config/init.php';
 if (!function_exists( 'hex2bin')) {
